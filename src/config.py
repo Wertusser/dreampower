@@ -6,7 +6,7 @@ class Config:
 
     version = "v1.2.9"
     checkpoints_version = "v0.0.1"
-    checkpoints_cdn = "https://downloads.dreamnet.tech/checkpoints/{}?direct=1"
+    checkpoints_cdn = "https://github.com/dreamnettech/dreampower-checkpoints/releases/download/0.0.1/{}.zip"
 
     # experiment specifics
     norm = "batch"  # instance normalization or batch normalization
