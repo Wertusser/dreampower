@@ -79,22 +79,21 @@ class Handler(FileSystemEventHandler):
         """
         if not event.is_directory:
             Conf.log.debug("Received file created event {}.".format(event.src_path))
-            if os.path.basename(event.src_path) == ".start":
-                os.remove(event.src_path)
+            os.remove(event.src_path)
 
-                start = time.time()
-                Conf.log.info("Execution Of {} Folder.".format(os.path.dirname(event.src_path)))
-                args = copy.deepcopy(Conf.args)
-                args.update({
-                    "input": os.path.dirname(event.src_path),
-                    "output": self.__out_dir,
-                })
+            start = time.time()
+            Conf.log.info("Execution Of {} Folder.".format(os.path.dirname(event.src_path)))
+            args = copy.deepcopy(Conf.args)
+            args.update({
+                "input": os.path.dirname(event.src_path),
+                "output": self.__out_dir,
+            })
 
-                FolderImageProcessing(args=args).run()
+            FolderImageProcessing(args=args).run()
 
-                Conf.log.success("Execution of {} Folder Done in {}.".format(
-                    os.path.dirname(event.src_path), round(time.time() - start, 2)
-                ))
+            Conf.log.success("Execution of {} Folder Done in {}.".format(
+                os.path.dirname(event.src_path), round(time.time() - start, 2)
+            ))
 
 
 def main(_):
