@@ -45,9 +45,7 @@ class Config:
     desired_shape = 512, 512, 3
 
     # Argparser dict
-    args = {
-      "disable_persistent_gan": True
-    }
+    args = {}
 
     # Log
     log = None
