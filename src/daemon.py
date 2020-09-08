@@ -79,7 +79,6 @@ class Handler(FileSystemEventHandler):
         """
         if not event.is_directory:
             Conf.log.debug("Received file created event {}.".format(event.src_path))
-            os.remove(event.src_path)
 
             start = time.time()
             Conf.log.info("Execution Of {} Folder.".format(os.path.dirname(event.src_path)))
@@ -90,10 +89,11 @@ class Handler(FileSystemEventHandler):
             })
             Conf.log.debug("ARGS {}.".format(args))
             FolderImageProcessing().run(config=args)
-
+          
             Conf.log.success("Execution of {} Folder Done in {}.".format(
                 os.path.dirname(event.src_path), round(time.time() - start, 2)
             ))
+            os.remove(event.src_path)
 
 
 def main(_):
