@@ -26,7 +26,7 @@ class ImageTransformGAN(ImageTransform):
 
         self._checkpoint = checkpoint
         self._phase = phase
-        self._persistent = not Conf.args["disable_persistent_gan"]
+        self._persistent = False
         self._gpu_ids = Conf.args["gpu_ids"]
 
         if self._persistent:
