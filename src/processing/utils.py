@@ -11,6 +11,7 @@ from transform.opencv.resize import ImageToResized, ImageToCrop, ImageToOverlay,
 def shift_step(args, p, reason, shift_start_add=0, shift_end_add=0):
     #if not args['steps']:
     #    args['steps'] = (0, 5)
+    return
 
     if not args['steps']:
       return
