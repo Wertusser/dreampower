@@ -23,6 +23,7 @@ class FolderImageProcessing(MultipleImageProcessing):
 
         for r, _, _ in os.walk(self._input_folder_path):
             args = copy.deepcopy(self._args)
+            
             args['input'] = [
                 x.path for x in os.scandir(r) if is_file(args, x.path) and is_a_supported_image_file_extension(x.path)
             ]
@@ -41,7 +42,8 @@ class FolderImageProcessing(MultipleImageProcessing):
                 )
                 for x in args['input']
             ]
-
+            
+            Conf.log.debug("ARGS {}".format(args))
             self._process_list.append(
                 (MultipleImageProcessing(), self.__get_folder_args(args, r))
             )
